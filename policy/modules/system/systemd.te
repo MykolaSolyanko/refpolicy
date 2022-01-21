@@ -1529,6 +1529,9 @@ fs_search_cgroup_dirs(systemd_sysctl_t)
 
 systemd_log_parse_environment(systemd_sysctl_t)
 
+fs_getattr_cgroup(systemd_sessions_t)
+fs_search_cgroup_dirs(systemd_sessions_t)
+
 #########################################
 #
 # Sysusers local policy
@@ -1672,6 +1675,13 @@ sysnet_manage_config(systemd_tmpfiles_t)
 sysnet_relabel_config(systemd_tmpfiles_t)
 
 systemd_log_parse_environment(systemd_tmpfiles_t)
+
+mls_file_write_all_levels(systemd_tmpfiles_t)
+mls_file_read_all_levels(systemd_tmpfiles_t)
+mls_file_downgrade(systemd_tmpfiles_t)
+mls_file_upgrade(systemd_tmpfiles_t)
+
+fs_getattr_cgroup(systemd_tmpfiles_t)
 
 userdom_manage_user_runtime_root_dirs(systemd_tmpfiles_t)
 userdom_relabel_user_runtime_root_dirs(systemd_tmpfiles_t)
