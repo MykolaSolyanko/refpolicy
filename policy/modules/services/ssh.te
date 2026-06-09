@@ -312,6 +312,13 @@ optional_policy(`
 ')
 
 optional_policy(`
+	# Traverse /var/aos when the rootfs is overlaid from /var/aos/overlay
+	# (aosoverlay). Without this, sshd cannot resolve paths through the
+	# overlay and login fails with a denial searching aos_var_run_t.
+	search_aos_dirs(sshd_t)
+')
+
+optional_policy(`
 	inetd_tcp_service_domain(sshd_t, sshd_exec_t)
 ')
 
